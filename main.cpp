@@ -10,7 +10,7 @@ int main()
     // setup
     RenderWindow window(VideoMode(800, 600), "SFML works!");
     window.setFramerateLimit(60);
-    Rectangle rect(Vector2f(30,30));
+    Rectangle rect(Vector2f(30, 30));
 
     // loop
     while (window.isOpen())
@@ -25,13 +25,23 @@ int main()
                 Cuando se de click izquierdo, se deberá actualizar el objetivo del cuadrado a la posición del mouse.
             */
 
-        }
+            if (event.type == Event::MouseButtonPressed)
+            {
 
-        window.clear();
-        rect.update();
-        rect.drawTo(window);
-        window.display();
+                if (Mouse::isButtonPressed(Mouse::Left))
+                {
+                        objective = Mouse::getPosition(window);;
+                    
+                }
+            }
+        }
     }
 
-    return 0;
+    window.clear();
+    rect.update();
+    rect.drawTo(window);
+    window.display();
+}
+
+return 0;
 }
